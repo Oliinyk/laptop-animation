@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowdoin Class of 2030</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+	background: linear-gradient(135deg, #0d0d1a 0%, #1a0d2e 50%, #0d1a2e 100%);
+	color:#fff;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	overflow-x:hidden;
+}
+.orb {
+  position:absolute; border-radius:50%;
+  filter:blur(80px); opacity:.35; pointer-events:none;
+  animation:drift 8s ease-in-out infinite;
+}
+.o1{width:600px;height:600px;background:#7c3aed;top:-200px;left:-100px;}
+.o2{width:500px;height:500px;background:#1d4ed8;bottom:-150px;right:-100px;animation-delay:-4s;}
+.o3{width:300px;height:300px;background:#7c3aed;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-2s;}
+@keyframes drift{0%,100%{translate:0 0}33%{translate:30px -20px}66%{translate:-20px 30px}}
+
+#scroll-driver { height:600vh; } /* Збільшили для більше контенту */
+#sticky-wrap {
+  position:sticky; top:0; height:100vh;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+
+/* ── ФОН (завжди статичний, не рухається) ── */
+.campus-bg {
+  position:fixed;
+  inset:0;
+  background-size:contain;
+  background-position:center;
+  background-repeat: no-repeat;
+  z-index:0;
+}
+
+#bottom {
+	background-image:url('./img/hero-mac.jpg');
+	background-size:contain;
+	background-position:center;
+	background-repeat: no-repeat;
+}
+
+.campus-bg::after {
+	content:'';
+	position:absolute;
+	inset:0;
+	background-image: linear-gradient(rgba(167, 139, 250, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, .07) 1px, transparent 1px);
+}
+
+.gradient-overlay {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+/* ── КОНТЕНТ що згортається ── */
+#content-wrapper {
+  position:absolute;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  transform-origin:center center;
+}
+
+#content-inner {
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+/* ── СТІКЕРИ ── */
+.sticker {
+  position:absolute;
+  pointer-events:none;
+  animation:float 6s ease-in-out infinite;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+  z-index:0;
+}
+
+.sticker img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.sticker1 {
+	top:12%; left:6%;
+	animation-delay:0s;
+}
+.sticker2 {
+	top:18%; right:8%;
+	animation-delay:-2s;
+}
+.sticker3 {
+	bottom:22%; left:10%;
+	animation-delay:-4s;
+}
+.sticker4 {
+	bottom:18%; right:7%;
+	animation-delay:-1s;
+}
+.sticker5 {
+	top:10%; right:34%;
+	animation-delay:0s;
+}
+.sticker6 {
+	bottom:12%; right:42%;
+	animation-delay:-2s;
+}
+.sticker7 {
+	top:35%; left:7%;
+	animation-delay:-4s;
+}
+
+@keyframes float {
+  0%, 100% { transform:translateY(0) rotate(0deg); }
+  50% { transform:translateY(-12px) rotate(2deg); }
+}
+
+/* ── HERO ── */
+.hero {
+  position:relative;
+  z-index:2;
+  text-align:center;
+  max-width:900px;
+  padding:0 2rem;
+}
+
+.logo-container {
+  margin-bottom:clamp(1.5rem, 3vh, 2.5rem);
+  display:flex;
+  justify-content:center;
+}
+
+.bowdoin-logo {
+  height:auto;
+  filter:drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(167, 139, 250, .12);
+  border: 1px solid rgba(167, 139, 250, .3);
+  border-radius: 100px;
+  padding: 6px 18px;
+  font-size: 13px;
+  color: #a78bfa;
+  margin-bottom: 2rem;
+  letter-spacing: .05em;
+  backdrop-filter:blur(10px);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a78bfa;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity:1; }
+  50% { opacity:0.3; }
+}
+
+h1 {
+  font-size: 56px;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:clamp(1rem, 2vh, 1.5rem);
+  color:#fff;
+}
+
+.highlight {
+	background: rgb(245, 245, 247);
+	background-clip: text;
+	-webkit-text-fill-color: rgba(0, 0, 0, 0);
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	background-image: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
+}
+
+.sub {
+	font-size:28px;
+	max-width:680px;
+	margin:0 auto 2rem;
+	line-height:1.5;
+	font-weight:400;
+
+	background: rgb(245, 245, 247);
+	background-clip: text;
+	-webkit-text-fill-color: rgba(0, 0, 0, 0);
+	-webkit-box-decoration-break: clone;
+	box-decoration-break: clone;
+	background-image: linear-gradient(90deg, #ffe1fc 7%, #c683ef 79%);
+}
+
+/* ── MACBOOK ── */
+#mac {
+  position:absolute;
+  z-index:10;
+  width:min(840px,88vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  opacity:0;
+  transform:scale(.86) translateY(70px);
+  pointer-events:none;
+}
+
+.lid {
+  width:100%;
+  background:linear-gradient(180deg,#2c2c30,#1d1d1f);
+  border-radius:14px 14px 0 0;
+  padding:13px 13px 0;
+  aspect-ratio:16/10;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 50px 100px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
+}
+
+.lid::before {
+  content:'';
+  position:absolute;
+  top:8px; left:50%;
+  transform:translateX(-50%);
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#111;
+  box-shadow:0 0 0 2px #333;
+  z-index:20;
+}
+
+.screen {
+  width:100%; height:100%;
+  background:#000;
+  border-radius:5px;
+  overflow:hidden;
+  position:relative;
+}
+
+/* Скролюваний контент всередині екрану */
+.scr-bg {
+  width:100%; 
+  height:100%;
+  position:relative;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+}
+
+/* Прибираємо scrollbar в MacBook екрані для естетики */
+.scr-bg::-webkit-scrollbar {
+  width:3px;
+}
+.scr-bg::-webkit-scrollbar-track {
+  background:rgba(255,255,255,0.05);
+}
+.scr-bg::-webkit-scrollbar-thumb {
+  background:rgba(255,255,255,0.2);
+  border-radius:2px;
+}
+
+.screen-content {
+  /* min-height:300vh; */
+  background:#fff;
+  position:relative;
+}
+
+/* Sections inside MacBook */
+.screen-section {
+  /* min-height:100vh; */
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(2rem, 5vw, 4rem);
+  position:relative;
+}
+.screen-section a {
+  /* background: linear-gradient(135deg, #c4b5fd, #818cf8, #60a5fa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: underline; */
+  color: #06c;
+  text-decoration: none;
+}
+.screen-section a:hover {
+  text-decoration: underline;
+}
+
+/* .screen-section::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-color: #000;
+  background-size:cover;
+  background-position:center;
+  opacity:0.2;
+  filter:blur(1px);
+} */
+
+/* .screen-section::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,20,0.8));
+} */
+
+.section-content {
+  position:relative;
+  z-index:1;
+  max-width:620px;
+}
+
+.section-content h3 {
+	font-size:clamp(1.5rem, 4vw, 3rem);
+	font-weight:700;
+	color:#000;
+	margin-bottom:1rem;
+}
+
+.section-content .highlight-small {
+    background: rgb(245, 245, 247);
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-image: linear-gradient(90deg, #e1e5ff 7%, #83a0ef 80%);
+}
+.section-content p.sub {
+  font-size: 24px;
+  line-height: 1.4;
+  background-image: linear-gradient(90deg, #000 7%, #984cc6 79%);
+} 
+.section-content p {
+  font-size: 18px;
+  color:rgba(0,0,0,0.75);
+  line-height:1.6;
+  margin-bottom:1.5rem;
+  font-weight: 300;
+}
+.section-content img {
+  max-width: 100%;
+  height: auto;
+}
+.section-content .row {
+  display: flex;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.section-content .row > * {
+  padding-left: 15px;
+  padding-right: 15px;
+  max-width: 50%;
+  width: 100%;
+}
+.section-content .row p {
+  font-size: 16px;
+}
+
+.section-content .cta {
+  display:inline-block;
+  background:rgba(0,0,0,0.1);
+  color:#fff;
+  padding:12px 24px;
+  border-radius:100px;
+  text-decoration:none;
+  border:1px solid rgba(0,0,0,0.2);
+  font-size:15px;
+  font-weight:500;
+  margin-top:1rem;
+  transition:all 0.3s;
+}
+
+.section-content .cta:hover {
+  background:rgba(255,255,255,0.15);
+  transform:translateY(-2px);
+}
+
+.glare {
+  position:absolute;
+  top:0; left:0; right:0;
+  height:40%;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+  z-index:25;
+  pointer-events:none;
+}
+
+.hinge {
+  width:102%; height:5px;
+  background:linear-gradient(180deg, #3c3c40, #2c2c30);
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+.base {
+  width:104%; height:26px;
+  background:linear-gradient(180deg, #242428, #1c1c20);
+  border-radius:0 0 10px 10px;
+  position:relative;
+  box-shadow:0 12px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.base::after {
+  content:'';
+  position:absolute;
+  bottom:6px; left:50%;
+  transform:translateX(-50%);
+  width:18%; height:8px;
+  background:rgba(255,255,255,.04);
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+/* ── SCROLL HINT ── */
+#hint {
+  position:fixed;
+  bottom:2rem; left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:rgba(255,255,255,.4);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  z-index:100;
+  transition:opacity .4s;
+}
+
+.arr {
+  width:20px; height:20px;
+  border-right:2px solid rgba(255,255,255,.3);
+  border-bottom:2px solid rgba(255,255,255,.3);
+  transform:rotate(45deg);
+  animation:bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform:rotate(45deg) translateY(0); }
+  50% { transform:rotate(45deg) translateY(6px); }
+}
+
+/* ── BOTTOM ── */
+#bottom {
+	background-color: #000;
+	min-height:100vh;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	padding:4rem 2rem;
+	position:relative;
+	z-index:2;
+}
+
+#bottom h2 {
+  font-size:clamp(2rem, 5vw, 4rem);
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-bottom:1rem;
+  color:#fff;
+
+  background: rgb(245, 245, 247);
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
+}
+
+#bottom p {
+  color:rgba(255,255,255,.65);
+  font-size:1.1rem;
+  max-width:500px;
+  line-height:1.7;
+}
+
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:#000; }
+::-webkit-scrollbar-thumb { background:rgba(255,255,255,.2); border-radius:3px; }
+
+@media (max-width: 767px) {
+  .sticker1 {
+    max-width: 320px;
+  }
+  .sticker3 {
+    bottom: 5%;
+    left: 10%;
+  }
+  .sticker4 {
+    bottom: 5%;
+    right: 23%;
+  }
+  .sticker6 {
+    bottom: 5%;
+    right: 9%;
+  }
+  .sticker2,.sticker5,.sticker7 {
+    display: none;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<div class="campus-bg"></div>
+<div class="gradient-overlay"></div>
+
+<div id="scroll-driver">
+<div id="sticky-wrap">
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+
+  <div id="content-wrapper">
+    <div id="content-inner">
+      
+		<div class="sticker sticker1">
+			<img src="./img/logo-1.svg" alt="Bowdoin">
+		</div>
+		<div class="sticker sticker2">
+			<img src="./img/logo-2.svg" alt="Polar Bear">
+		</div>
+		<div class="sticker sticker3">
+			<img src="./img/logo-3.svg" alt="Polar Bear">
+		</div>
+		<div class="sticker sticker4">
+			<img src="./img/logo-4.png" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker5">
+			<img src="./img/logo-5.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker6">
+			<img src="./img/logo-7.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker7">
+			<img src="./img/logo-8.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+
+      <div class="hero">
+        <h1>Welcome, <span class="highlight">Class of 2030!</span></h1>
+        <p class="sub">
+          Every incoming Bowdoin student receives a brand new MacBook Pro to support your academic journey. Powerful tools for powerful minds.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MacBook -->
+  <div id="mac">
+    <div class="lid">
+      <div class="screen">
+        <div class="scr-bg" id="macbook-scroll">
+          <div class="screen-content">
+            
+            <!-- Секція 1 -->
+            <div class="screen-section">
+              <div class="section-content">
+                <!-- <h3>Welcome, <span class="highlight-small">Class of 2030!</span></h3> -->
+                <p class="sub">By providing every student a 13-inch MacBook Pro, iPad mini, and Apple Pencil, Bowdoin inspires innovation and creates digital equity for every student regardless of family means, fully equipping them with the tools and opportunities to learn and lead in a digital world.</p>
+
+                <p>Bowdoin College’s groundbreaking Digital Excellence Commitment (DExC) will provide every current student and all future students with a suite of the latest Apple technology and access to a full range of course-specific software designed to advance learning, inspire innovative teaching, and create digital equity across the student body in the use of tools essential for success in the twenty-first century.</p>
+                <p>DExC will build on the success of <a href="#">Bowdoin’s iPad Initiative</a> by equipping all students with a 13-inch MacBook Pro powered by M1, an iPad mini, and an Apple Pencil, along with access to software used across the range of courses at the College, beginning in fall 2022. The cost of the program will be covered entirely by Bowdoin.</p>
+              
+                <img alt="macbook-and-ipad-wide.jpg" class="full-width no-border" height="340" src="https://www.bowdoin.edu/news/2022/img/macbook-and-ipad-wide.jpg" width="853">
+
+                <p>“During the pandemic we witnessed firsthand the power of a common technology platform for teaching and learning, along with the substantial and differential benefits that come with the combination of a laptop and iPad with an Apple Pencil,” said Bowdoin College President Clayton Rose.</p>
+
+                <p><b>“Our Digital Excellence Commitment allows us to level the playing field so that every student has the opportunity to fully benefit from the technology that plays an essential and growing role in the learning experience at Bowdoin. Our central mission is to deliver an exceptional liberal arts education along with the knowledge and skills students need to lead in our increasingly digital world.”</b></p>
+
+                <div class="row">
+                  <div>
+                    <img alt="The new iPad showing the Nomad app." class="no-border" height="645" src="https://www.bowdoin.edu/news/2022/img/ipad_nomad_app.png" width="450">
+                  </div>
+                  <div>
+                    <p>Bowdoin students, faculty, and staff have been engaged with digital technology and tools for decades, and the COVID-19 pandemic has only amplified the importance of these digital skills. In summer 2020, the College issued each student an iPad Pro Wi-Fi + Cellular (activated and funded by the College for those students who had internet connectivity needs), an Apple Pencil, and an Apple Magic Keyboard.</p>
+                    <p>While initially intended to ensure that every student had the tools necessary for learning in the remote environment caused by the pandemic, the experiences of Bowdoin students and faculty with iPad Pro and Apple Pencil during the past eighteen months spurred numerous and unexpected learning and teaching innovations.</p>
+                  </div>
+                </div>
+
+                <p>At the same time, there has been the recognition that students and faculty continue to rely on laptops for important aspects of their academic work—in particular, discipline-specific software and other needs—and that an inequity of access to these tools creates challenges for students and faculty.</p>
+
+                <p><b>Entering first-year students will receive all new equipment and software; returning students will use the iPad Pro and Apple Pencil they have already received, supplemented by a 13-inch MacBook Pro powered by M1, with a full software suite.</b></p>
+
+                <p>Bowdoin’s transformative Digital Excellence Commitment will ensure that every student has consistent access, dependable support, a shared learning experience, and the tools they need to collaborate, innovate, and thrive in a digital world.</p>
+
+
+              </div>
+            </div>
+
+            <!-- Секція 2 -->
+            <!-- <div class="screen-section">
+              <div class="section-content">
+                <h3>Powerful <span class="highlight-small">Performance</span></h3>
+                <p>The M3 chip delivers breakthrough performance for everything from editing videos to running simulations.</p>
+                <a href="#" class="cta">Learn more →</a>
+              </div>
+            </div> -->
+
+            <!-- Секція 3 -->
+            <!-- <div class="screen-section">
+              <div class="section-content">
+                <h3>All-Day <span class="highlight-small">Battery Life</span></h3>
+                <p>Up to 22 hours of battery life means you can go from class to library to late-night study sessions without missing a beat.</p>
+                <a href="#" class="cta">Explore features →</a>
+              </div>
+            </div> -->
+
+          </div>
+        </div>
+        <div class="glare"></div>
+      </div>
+    </div>
+    <div class="hinge"></div>
+    <div class="base"></div>
+  </div>
+
+</div>
+</div>
+
+<div id="bottom">
+  <h2>Your journey starts here</h2>
+  <p>Customize your MacBook and make it yours. Welcome to Bowdoin.</p>
+</div>
+
+<div id="hint"><div class="arr"></div>scroll</div>
+
+<script>
+const contentWrapper = document.getElementById('content-wrapper');
+const mac = document.getElementById('mac');
+const hint = document.getElementById('hint');
+const driver = document.getElementById('scroll-driver');
+const macbookScroll = document.getElementById('macbook-scroll');
+
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+
+let macbookFullyVisible = false;
+
+function tick() {
+  const dH = driver.offsetHeight - window.innerHeight;
+  const raw = clamp(window.scrollY / dH, 0, 1);
+  
+  hint.style.opacity = raw < 0.04 ? '1' : '0';
+  
+  const screen = mac.querySelector('.screen');
+  const r = screen.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  
+  const scaleT = Math.min(r.width / vw, r.height / vh);
+  const dx = (r.left + r.width / 2) - vw / 2;
+  const dy = (r.top + r.height / 2) - vh / 2;
+  
+  // Фаза 1: згортання контенту (0-30%)
+  const sT = ease(clamp(raw / 0.3, 0, 1));
+  // Фаза 2: поява MacBook (25-50%)
+  const mT = ease(clamp((raw - 0.25) / 0.25, 0, 1));
+  
+  const sc = lerp(1, scaleT, sT);
+  const tx = lerp(0, dx, sT);
+  const ty = lerp(0, dy, sT);
+  const op = lerp(1, 0, clamp((sT - 0.85) / 0.15, 0, 1));
+  
+  // Контент згортається
+  contentWrapper.style.transform = `translate(${tx}px, ${ty}px) scale(${sc})`;
+  contentWrapper.style.opacity = op;
+  
+  // MacBook з'являється
+  mac.style.opacity = mT;
+  mac.style.transform = `scale(${lerp(0.86, 1, mT)}) translateY(${lerp(70, 0, mT)}px)`;
+  
+  // Коли MacBook повністю видимий (після 50% скролу)
+  if (raw > 0.5 && mT >= 1) {
+    if (!macbookFullyVisible) {
+      macbookFullyVisible = true;
+      mac.style.pointerEvents = 'auto';
+    }
+    
+    // Скрол всередині MacBook (50-100%)
+    const innerScrollProgress = clamp((raw - 0.5) / 0.5, 0, 1);
+    const maxScroll = macbookScroll.scrollHeight - macbookScroll.clientHeight;
+    macbookScroll.scrollTop = innerScrollProgress * maxScroll;
+    
+  } else {
+    if (macbookFullyVisible) {
+      macbookFullyVisible = false;
+      mac.style.pointerEvents = 'none';
+    }
+  }
+}
+
+window.addEventListener('scroll', tick, { passive: true });
+tick();
+</script>
+</body>
+</html>
