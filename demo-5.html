@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowdoin Class of 2030</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+	background: linear-gradient(135deg, #0d0d1a 0%, #1a0d2e 50%, #0d1a2e 100%);
+	color:#fff;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	overflow-x:hidden;
+}
+
+.orb {
+  position:absolute; border-radius:50%;
+  filter:blur(80px); opacity:.35; pointer-events:none;
+  animation:drift 8s ease-in-out infinite;
+}
+.o1{width:600px;height:600px;background:#7c3aed;top:-200px;left:-100px;}
+.o2{width:500px;height:500px;background:#1d4ed8;bottom:-150px;right:-100px;animation-delay:-4s;}
+.o3{width:300px;height:300px;background:#7c3aed;top:50%;left:50%;transform:translate(-50%,-50%);animation-delay:-2s;}
+@keyframes drift{0%,100%{translate:0 0}33%{translate:30px -20px}66%{translate:-20px 30px}}
+
+#scroll-driver { height:400vh; }
+#sticky-wrap {
+  position:sticky; top:0; height:100vh;
+  overflow:hidden; display:flex; align-items:center; justify-content:center;
+}
+
+.campus-bg {
+  position:fixed;
+  inset:0;
+  background-size:contain;
+  background-position:center;
+  background-repeat: no-repeat;
+  z-index:0;
+}
+
+.campus-bg::after {
+	content:'';
+	position:absolute;
+	inset:0;
+	background-image: linear-gradient(rgba(167, 139, 250, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(167, 139, 250, .07) 1px, transparent 1px);
+}
+
+.gradient-overlay {
+  position:fixed;
+  inset:0;
+  z-index:1;
+  pointer-events:none;
+}
+
+#content-wrapper {
+  position:absolute;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:5;
+  transform-origin:center center;
+}
+
+#content-inner {
+  position:relative;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.sticker {
+  position:absolute;
+  pointer-events:none;
+  animation:float 6s ease-in-out infinite;
+  filter:drop-shadow(0 8px 16px rgba(0,0,0,0.4));
+  z-index:3;
+}
+
+.sticker img {
+  width:100%;
+  height:100%;
+  object-fit:contain;
+}
+
+.sticker1 { top:12%; left:6%; animation-delay:0s; }
+.sticker2 { top:18%; right:8%; animation-delay:-2s; }
+.sticker3 { bottom:22%; left:10%; animation-delay:-4s; }
+.sticker4 { bottom:18%; right:7%; animation-delay:-1s; }
+.sticker5 { top:10%; right:34%; animation-delay:0s; }
+.sticker6 { bottom:12%; right:42%; animation-delay:-2s; }
+.sticker7 { top:35%; left:7%; animation-delay:-4s; }
+
+@keyframes float {
+  0%, 100% { transform:translateY(0) rotate(0deg); }
+  50% { transform:translateY(-12px) rotate(2deg); }
+}
+
+.hero {
+  position:relative;
+  z-index:2;
+  text-align:center;
+  max-width:900px;
+  padding:0 2rem;
+}
+
+h1 {
+  font-size: 56px;
+  font-weight:700;
+  line-height:1.1;
+  letter-spacing:-0.02em;
+  margin-bottom:clamp(1rem, 2vh, 1.5rem);
+  color:#fff;
+}
+
+.highlight {
+	background: rgb(245, 245, 247);
+	background-clip: text;
+	-webkit-text-fill-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
+}
+
+.sub {
+	font-size:28px;
+	max-width:680px;
+	margin:0 auto 2rem;
+	line-height:1.5;
+	font-weight:400;
+	background: rgb(245, 245, 247);
+	background-clip: text;
+	-webkit-text-fill-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(90deg, #ffe1fc 7%, #c683ef 79%);
+}
+
+/* ── MACBOOK ── */
+#mac {
+  position:absolute;
+  z-index:10;
+  width:min(840px,88vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  opacity:0;
+  transform:scale(.86) translateY(70px);
+  pointer-events:none;
+}
+
+.lid {
+  width:100%;
+  background:linear-gradient(180deg,#2c2c30,#1d1d1f);
+  border-radius:14px 14px 0 0;
+  padding:13px 13px 0;
+  aspect-ratio:16/10;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 50px 100px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.06);
+}
+
+.lid::before {
+  content:'';
+  position:absolute;
+  top:8px; left:50%;
+  transform:translateX(-50%);
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#111;
+  box-shadow:0 0 0 2px #333;
+  z-index:20;
+}
+
+.screen {
+  width:100%; height:100%;
+  background:#000;
+  border-radius:5px;
+  overflow:hidden;
+  position:relative;
+}
+
+.scr-bg {
+  width:100%; 
+  height:100%;
+  background:#000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:1rem;
+  position:relative;
+  overflow:hidden;
+}
+
+.scr-bg::before {
+  content:'';
+  position:absolute;
+  inset:0;
+  background-color: #000;
+}
+
+.scr-bg::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,20,0.8));
+}
+
+.scr-text {
+  position:relative;
+  z-index:1;
+}
+
+.scr-text h3 {
+	font-size: 56px;
+	font-weight:700;
+	color:#fff;
+	margin-bottom:clamp(0.3rem, 1vh, 0.5rem);
+}
+
+.scr-text .highlight-small {
+    background: rgb(245, 245, 247);
+    background-clip: text;
+    -webkit-text-fill-color: rgba(0, 0, 0, 0);
+    background-image: linear-gradient(90deg, #e1e5ff 7%, #83a0ef 80%);
+}
+
+.glare {
+  position:absolute;
+  top:0; left:0; right:0;
+  height:40%;
+  background:linear-gradient(180deg, rgba(255,255,255,.03), transparent);
+  z-index:15;
+}
+
+.hinge {
+  width:102%; height:5px;
+  background:linear-gradient(180deg, #3c3c40, #2c2c30);
+  box-shadow:0 2px 8px rgba(0,0,0,.5);
+}
+
+.base {
+  width:104%; height:26px;
+  background:linear-gradient(180deg, #242428, #1c1c20);
+  border-radius:0 0 10px 10px;
+  position:relative;
+  box-shadow:0 12px 40px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+}
+
+.base::after {
+  content:'';
+  position:absolute;
+  bottom:6px; left:50%;
+  transform:translateX(-50%);
+  width:18%; height:8px;
+  background:rgba(255,255,255,.04);
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,.06);
+}
+
+#hint {
+  position:fixed;
+  bottom:2rem; left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  color:rgba(255,255,255,.4);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  z-index:100;
+  transition:opacity .4s;
+}
+
+.arr {
+  width:20px; height:20px;
+  border-right:2px solid rgba(255,255,255,.3);
+  border-bottom:2px solid rgba(255,255,255,.3);
+  transform:rotate(45deg);
+  animation:bounce 1.4s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform:rotate(45deg) translateY(0); }
+  50% { transform:rotate(45deg) translateY(6px); }
+}
+
+/* ═══════════════════════════════════════════════════════ */
+/* HARDWARE ZOOM SECTION (Apple Display Section) */
+/* ═══════════════════════════════════════════════════════ */
+
+.section-display {
+	position:relative;
+	background:#000;
+	padding-top:0;
+}
+
+.section-header {
+	max-width:980px;
+	margin:0 auto;
+	padding:6rem 2rem 4rem;
+}
+
+.section-header-eyebrow {
+	font-size:17px;
+	font-weight:600;
+	color:#86868b;
+	letter-spacing:0.05em;
+	margin-bottom:1rem;
+}
+
+.section-header-headline {
+	font-size:clamp(2.5rem, 5vw, 4.5rem);
+	font-weight:700;
+	line-height:1.05;
+	letter-spacing:-0.02em;
+	color:#f5f5f7;
+}
+
+.hardware-zoom {
+	position:relative;
+	min-height:300vh;
+}
+
+.copy-lockup {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	pointer-events:none;
+	z-index:5;
+}
+
+.copy-container {
+	width:100%;
+	max-width:980px;
+	padding:0 2rem;
+}
+
+.hardware-zoom-copy {
+	text-align:center;
+}
+
+.hardware-zoom-copy p {
+	font-size:clamp(1.2rem, 2.5vw, 1.8rem);
+	font-weight:600;
+	line-height:1.4;
+	color:#f5f5f7;
+	margin-bottom:0.8rem;
+	opacity:0;
+	transform:translateY(10px);
+	transition:opacity 0.6s ease, transform 0.6s ease;
+}
+
+.hardware-zoom-copy p.visible {
+	opacity:1;
+	transform:translateY(0);
+}
+
+.scrim {
+	position:absolute;
+	inset:0;
+	background:linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.8) 100%);
+	opacity:0;
+	transition:opacity 0.6s ease;
+	pointer-events:none;
+	z-index:-1;
+}
+
+.scrim.show {
+	opacity:0.7;
+}
+
+.scroll-container {
+	position:sticky;
+	top:0;
+	height:100vh;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	overflow:hidden;
+}
+
+.hardware-container {
+	position:relative;
+	width:min(1400px, 120vw);
+	transform-origin:center center;
+	will-change:transform;
+}
+
+.hardware-image {
+	width:100%;
+	height:auto;
+	display:block;
+}
+
+.subsection-container {
+	position:relative;
+	background:#000;
+	padding:6rem 2rem;
+}
+
+.viewport-content {
+	max-width:980px;
+	margin:0 auto;
+}
+
+.column {
+	margin-bottom:3rem;
+}
+
+.typography-eyebrow-reduced {
+	font-size:21px;
+	line-height:1.4;
+	font-weight:400;
+	color:#f5f5f7;
+}
+
+.section-copy-with-highlight .highlight {
+	background:linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
+	-webkit-background-clip:text;
+	-webkit-text-fill-color:transparent;
+	background-clip:text;
+	font-weight:600;
+}
+
+.links-stacked {
+	list-style:none;
+	padding:0;
+	margin-top:2rem;
+}
+
+.links-stacked li {
+	font-size:17px;
+	font-weight:600;
+	color:#f5f5f7;
+	padding:1rem 0;
+	border-bottom:1px solid rgba(245,245,247,0.1);
+}
+
+.links-stacked li:first-child {
+	border-top:1px solid rgba(245,245,247,0.1);
+}
+
+/* ── GALLERY SECTION ── */
+.gallery {
+	position:relative;
+	background:#000;
+	padding:4rem 0;
+}
+
+.card-set {
+	display:grid;
+	grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+	gap:2rem;
+	list-style:none;
+	padding:0 2rem;
+	max-width:1200px;
+	margin:0 auto;
+}
+
+.card-container {
+	position:relative;
+}
+
+.card {
+	background:#1d1d1f;
+	border-radius:18px;
+	overflow:hidden;
+	position:relative;
+}
+
+.tile-rounded {
+	border-radius:18px;
+}
+
+.card-caption-content {
+	padding:2rem;
+}
+
+.card-caption-heading {
+	font-size:24px;
+	font-weight:600;
+	line-height:1.2;
+	margin-bottom:1rem;
+	color:#f5f5f7;
+}
+
+.card-caption-content p {
+	font-size:17px;
+	line-height:1.5;
+	color:#a1a1a6;
+}
+
+.media-container {
+	position:relative;
+	width:100%;
+	aspect-ratio:16/10;
+}
+
+.positioned-media-element {
+	width:100%;
+	height:100%;
+	object-fit:cover;
+}
+
+.card-footnote-content {
+	padding:1rem 2rem;
+	font-size:12px;
+	color:#6e6e73;
+}
+
+.wide {
+	grid-column:span 2;
+}
+
+@media (max-width: 768px) {
+	.wide {
+		grid-column:span 1;
+	}
+	
+	.card-set {
+		grid-template-columns:1fr;
+	}
+}
+
+/* ── BOTTOM ── */
+#bottom {
+	background-color: #000;
+	min-height:100vh;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+	text-align:center;
+	padding:4rem 2rem;
+	position:relative;
+}
+
+#bottom h2 {
+  font-size:clamp(2rem, 5vw, 4rem);
+  font-weight:700;
+  letter-spacing:-.02em;
+  margin-bottom:1rem;
+  background: rgb(245, 245, 247);
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0, 0, 0, 0);
+  background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
+}
+
+#bottom p {
+  color:rgba(255,255,255,.65);
+  font-size:1.1rem;
+  max-width:500px;
+  line-height:1.7;
+}
+
+::-webkit-scrollbar { width:5px; }
+::-webkit-scrollbar-track { background:#000; }
+::-webkit-scrollbar-thumb { background:rgba(255,255,255,.2); border-radius:3px; }
+</style>
+</head>
+<body>
+
+<div class="campus-bg"></div>
+<div class="gradient-overlay"></div>
+
+<div id="scroll-driver">
+<div id="sticky-wrap">
+
+<div class="orb o1"></div>
+<div class="orb o2"></div>
+<div class="orb o3"></div>
+
+  <div id="content-wrapper">
+    <div id="content-inner">
+      
+		<div class="sticker sticker1"><img src="./img/logo-1.svg" alt="Bowdoin"></div>
+		<div class="sticker sticker2"><img src="./img/logo-2.svg" alt="Polar Bear"></div>
+		<div class="sticker sticker3"><img src="./img/logo-3.svg" alt="Polar Bear"></div>
+		<div class="sticker sticker4"><img src="./img/logo-4.png" alt="Bowdoin College"></div>
+		<div class="sticker sticker5"><img src="./img/logo-5.svg" alt="Bowdoin College"></div>
+		<div class="sticker sticker6"><img src="./img/logo-7.svg" alt="Bowdoin College"></div>
+		<div class="sticker sticker7"><img src="./img/logo-8.svg" alt="Bowdoin College"></div>
+
+      <div class="hero">
+        <h1>Welcome, <span class="highlight">Class of 2030!</span></h1>
+        <p class="sub">Every incoming Bowdoin student receives a brand new MacBook Pro to support your academic journey. Powerful tools for powerful minds.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="mac">
+    <div class="lid">
+      <div class="screen">
+        <div class="scr-bg">
+          <div class="scr-text">
+            <h3>Welcome, <span class="highlight-small">Class of 2030!</span></h3>
+            <p class="sub">Every incoming Bowdoin student receives a brand new MacBook Pro to support your academic journey.</p>
+          </div>
+        </div>
+        <div class="glare"></div>
+      </div>
+    </div>
+    <div class="hinge"></div>
+    <div class="base"></div>
+  </div>
+
+</div>
+</div>
+
+<!-- HARDWARE ZOOM SECTION -->
+<section class="section-display">
+	<div class="viewport-content">
+		<header class="section-header">
+			<h2 class="section-header-eyebrow">Display</h2>
+			<p class="section-header-headline">Let there be delight.</p>
+		</header>
+	</div>
+
+	<div class="hardware-zoom">
+		<div class="copy-lockup">
+			<div class="copy-container">
+				<div class="copy-content">
+					<div class="hardware-zoom-copy">
+						<p data-line="1">Up to 1,600 nits peak HDR brightness</p>
+						<p data-line="2">1,000 nits sustained HDR brightness</p>
+						<p data-line="3">1,000,000:1 contrast ratio</p>
+						<p data-line="4">Down to 1 nit brightness in dark environments</p>
+						<p data-line="5">Up to 1,000 nits SDR brightness outdoors</p>
+						<p data-line="6">1,000,000,000 colors</p>
+						<div class="scrim"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="scroll-container">
+			<div class="sticky-container">
+				<div class="responsive-container">
+					<div class="hardware-container" id="hardware-container">
+						<img src="https://www.apple.com/v/macbook-pro/av/images/overview/display/display_hero__dnrmwfbtmz0i_large_2x.jpg" alt="MacBook Pro Display" class="hardware-image">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="subsection-container">
+		<div class="viewport-content">
+			<div class="column">
+				<p class="typography-eyebrow-reduced section-copy-with-highlight">
+					<span class="highlight">Go from the sunniest terrace to the darkest studio</span> with more ease than ever. The eye-popping Liquid Retina XDR display offers up to 1,600 nits peak HDR brightness. And it provides up to 1,000 nits of brightness for SDR content in bright light so you can see what's on your screen more clearly outside. In low-light situations, it dims to 1 nit so you can work comfortably in darker spaces.
+				</p>
+			</div>
+			<div class="column">
+				<ul class="links-stacked">
+					<li>Up to 1,600 nits peak HDR brightness</li>
+					<li>1,000 nits sustained HDR brightness</li>
+					<li>1,000,000:1 contrast ratio</li>
+					<li>Down to 1 nit brightness in dark environments</li>
+					<li>Up to 1,000 nits SDR brightness outdoors</li>
+					<li>1,000,000,000 colors</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="gallery">
+	<ul class="card-set">
+		<li class="card-container wide">
+			<div class="card-caption-content">
+				<h3 class="card-caption-heading">Nano-texture display. Fewer reflections. More clarity.</h3>
+				<p>For those who work in particularly bright spaces — whether inside or out — the nano-texture option reduces reflections to eliminate distractions while maintaining an excellent viewing experience.</p>
+			</div>
+			<div class="card tile-rounded">
+				<div class="media-container">
+					<img src="https://www.apple.com/v/macbook-pro/ak/images/overview/display/display_nano_texture__gq6yjr1q2x26_large.jpg" alt="Nano-texture display" class="positioned-media-element">
+				</div>
+			</div>
+		</li>
+
+		<li class="card-container wide">
+			<div class="card-caption-content">
+				<h3 class="card-caption-heading">Exceptional contrast with Extreme Dynamic Range.</h3>
+				<p>MacBook Pro can maintain extreme brightness for HDR content, delivering outstanding contrast between the brightest brights and the blackest blacks.</p>
+			</div>
+			<div class="card tile-rounded">
+				<div class="media-container">
+					<img src="https://www.apple.com/v/macbook-pro/ak/images/overview/display/display_edr__fqoq4jhrvvyq_large.jpg" alt="Extreme Dynamic Range" class="positioned-media-element">
+				</div>
+			</div>
+		</li>
+
+		<li class="card-container">
+			<div class="card-caption-content">
+				<h3 class="card-caption-heading">ProMotion. A smooth operator.</h3>
+				<p>ProMotion makes everything from scrolling to gaming superfluid and responsive, automatically adjusting to match the movement of content — with refresh rates up to 120Hz.</p>
+			</div>
+			<div class="card tile-rounded">
+				<div class="media-container">
+					<img src="https://www.apple.com/v/macbook-pro/ak/images/overview/display/display_promotion__c6mui8cg7tkm_large.jpg" alt="ProMotion" class="positioned-media-element">
+				</div>
+			</div>
+		</li>
+
+		<li class="card-container wide">
+			<div class="card-caption-content">
+				<h3 class="card-caption-heading">Multiple displays. Why limit yourself to one?</h3>
+				<p>If a project calls for larger canvases, you can connect up to two displays with M5 and M4 Pro or up to four displays with M4 Max.</p>
+			</div>
+			<div class="card tile-rounded">
+				<div class="media-container">
+					<img src="https://www.apple.com/v/macbook-pro/ak/images/overview/display/display_multiple__cdia69mhqe82_large.jpg" alt="Multiple displays" class="positioned-media-element">
+				</div>
+			</div>
+			<div class="card-footnote-content">
+				<p>Trello, Quip, Mail</p>
+			</div>
+		</li>
+	</ul>
+</section>
+
+<div id="bottom">
+  <h2>Your journey starts here</h2>
+  <p>Customize your MacBook and make it yours. Welcome to Bowdoin.</p>
+</div>
+
+<div id="hint"><div class="arr"></div>scroll</div>
+
+<script>
+const contentWrapper = document.getElementById('content-wrapper');
+const mac = document.getElementById('mac');
+const hint = document.getElementById('hint');
+const driver = document.getElementById('scroll-driver');
+
+const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const lerp = (a, b, t) => a + (b - a) * t;
+const ease = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+
+function tick() {
+  const dH = driver.offsetHeight - window.innerHeight;
+  const raw = clamp(window.scrollY / dH, 0, 1);
+  
+  hint.style.opacity = raw < 0.04 ? '1' : '0';
+  
+  const screen = mac.querySelector('.screen');
+  const r = screen.getBoundingClientRect();
+  const vw = window.innerWidth;
+  const vh = window.innerHeight;
+  
+  const scaleT = Math.min(r.width / vw, r.height / vh);
+  const dx = (r.left + r.width / 2) - vw / 2;
+  const dy = (r.top + r.height / 2) - vh / 2;
+  
+  const sT = ease(clamp(raw / 0.75, 0, 1));
+  const mT = ease(clamp((raw - 0.25) / 0.75, 0, 1));
+  
+  const sc = lerp(1, scaleT, sT);
+  const tx = lerp(0, dx, sT);
+  const ty = lerp(0, dy, sT);
+  const op = lerp(1, 0, clamp((sT - 0.85) / 0.15, 0, 1));
+  
+  contentWrapper.style.transform = `translate(${tx}px, ${ty}px) scale(${sc})`;
+  contentWrapper.style.opacity = op;
+  
+  mac.style.opacity = mT;
+  mac.style.transform = `scale(${lerp(0.86, 1, mT)}) translateY(${lerp(70, 0, mT)}px)`;
+}
+
+// Hardware Zoom Animation (ZOOM OUT - як на Apple)
+function hardwareZoomAnimation() {
+	const hwSection = document.querySelector('.hardware-zoom');
+	const hwContainer = document.getElementById('hardware-container');
+	const copyLines = document.querySelectorAll('.hardware-zoom-copy p');
+	const scrim = document.querySelector('.scrim');
+	
+	if (!hwSection) return;
+	
+	const rect = hwSection.getBoundingClientRect();
+	const sectionTop = rect.top;
+	const sectionHeight = rect.height;
+	
+	const progress = clamp((window.innerHeight - sectionTop) / (sectionHeight + window.innerHeight), 0, 1);
+	
+	// ZOOM OUT: починаємо з 1.5 (великий екран) → 1 (весь MacBook)
+	const scale = lerp(1.5, 1, ease(progress));
+	hwContainer.style.transform = `scale(${scale})`;
+	
+	copyLines.forEach((line, i) => {
+		const lineStart = 0.2 + (i * 0.08);
+		const lineEnd = lineStart + 0.1;
+		const lineProgress = clamp((progress - lineStart) / (lineEnd - lineStart), 0, 1);
+		
+		if (lineProgress > 0) {
+			line.classList.add('visible');
+			line.style.transitionDelay = `${i * 0.1}s`;
+		} else {
+			line.classList.remove('visible');
+		}
+	});
+	
+	if (progress > 0.15 && progress < 0.85) {
+		scrim.classList.add('show');
+	} else {
+		scrim.classList.remove('show');
+	}
+}
+
+window.addEventListener('scroll', () => {
+	tick();
+	hardwareZoomAnimation();
+}, { passive: true });
+
+tick();
+hardwareZoomAnimation();
+</script>
+</body>
+</html>

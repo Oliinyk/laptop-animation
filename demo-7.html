@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bowdoin Class of 2030 - Display</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+	background: #000;
+	color:#f5f5f7;
+	font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+	overflow-x:hidden;
+	-webkit-font-smoothing:antialiased;
+}
+
+.section-display {
+	position:relative;
+	background:#000;
+	padding-top:0;
+}
+
+.section-header {
+	max-width:980px;
+	margin:0 auto;
+	padding:6rem 2rem 4rem;
+}
+
+.section-header-eyebrow {
+	font-size:17px;
+	font-weight:600;
+	color:#86868b;
+	letter-spacing:0.05em;
+	margin-bottom:1rem;
+}
+
+.section-header-headline {
+	font-size:clamp(2.5rem, 5vw, 4.5rem);
+	font-weight:700;
+	line-height:1.05;
+	letter-spacing:-0.02em;
+	background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+/* ═══════════════════════════════════════════════
+   HARDWARE ZOOM — загальний трек скролу
+   ═══════════════════════════════════════════════ */
+
+/* Скільки vh «треку» ми виділяємо під всю анімацію.
+   Збільшити — повільніша анімація; зменшити — швидша. */
+.hardware-zoom {
+	position: relative;
+	height: 400vh; /* ← трек */
+}
+
+/* Sticky-обгортка займає весь вьюпорт і «приклеюється» */
+.scroll-container {
+	position: sticky;
+	top: 0;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Сама картинка */
+.hardware-container {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform-origin: center center;
+	will-change: transform;
+}
+
+.hardware-image {
+	width: min(1400px, 120vw);
+	height: auto;
+	display: block;
+	user-select: none;
+}
+
+/* ── оверлей-затемнення ── */
+.scrim {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.72);
+	opacity: 0;
+	pointer-events: none;
+	will-change: opacity;
+	z-index: 2;
+}
+
+/* ── блок з текстом поверх оверлею ── */
+.copy-lockup {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	z-index: 3;
+	overflow: hidden;  /* clip для slide-up ефекту */
+}
+
+.hardware-zoom-copy {
+	text-align: center;
+	padding: 0 2rem;
+}
+
+/* Кожен рядок — окремий кліп-контейнер */
+.line-clip {
+	overflow: hidden;
+	line-height: 1.3;
+	margin-bottom: 0.4rem;
+}
+
+.line-clip p {
+	font-size: clamp(1.2rem, 2.5vw, 1.9rem);
+	font-weight: 600;
+	color: #f5f5f7;
+	transform: translateY(100%);  /* початково захований вниз */
+	will-change: transform, opacity;
+	opacity: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   НИЖНІЙ КОНТЕНТ
+   ═══════════════════════════════════════════════ */
+
+.subsection-container {
+	position: relative;
+	background: #000;
+}
+
+.viewport-content {
+	max-width: 980px;
+	margin: 0 auto;
+	padding: 0rem 2rem 5rem;
+}
+
+.column {
+	font-size: 21px;
+	max-width: 840px;
+	margin: 0 auto;
+}
+
+.column p {
+	margin: 0 0 25px;
+	position: relative;
+	z-index: 1;
+}
+
+.column a {
+	color: #2997ff;
+	text-decoration: none;
+}
+.column a:hover { text-decoration: underline; }
+
+.column .img-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 0;
+	position: relative;
+	margin: 0 0 -100px;
+}
+.column img { max-width: 100%; height: auto; }
+
+.typography-eyebrow-reduced {
+	font-size: 24px;
+	line-height: 1.4;
+	font-weight: 400;
+	color: #f5f5f7;
+	margin-bottom: 35px;
+}
+
+.section-copy-with-highlight .highlight {
+	background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: 600;
+}
+
+#bottom {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	padding: 4rem 2rem;
+}
+
+#bottom h2 {
+	font-size: clamp(2rem, 5vw, 4rem);
+	font-weight: 700;
+	letter-spacing: -.02em;
+	margin-bottom: 1rem;
+	background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+#bottom p {
+	color: rgba(255,255,255,.65);
+	font-size: 1.1rem;
+	max-width: 500px;
+	line-height: 1.7;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
+
+
+.sticker-wrap {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 40px;
+	margin-top: 60px;
+}
+.sticker1 {
+	grid-column-start: 2;
+	grid-column-end: 5;
+}
+
+
+</style>
+</head>
+<body>
+
+<section class="section-display">
+	<div class="viewport-content" style="padding-bottom:0">
+		<header class="section-header">
+			<h2 class="section-header-eyebrow">Welcome to Bowdoin.</h2>
+			<p class="section-header-headline">Welcome, Class of 2030!</p>
+		</header>
+	</div>
+
+	<!-- ══ SCROLL TRACK ══ -->
+	<div class="hardware-zoom" id="hw-zoom">
+
+		<!-- sticky viewport -->
+		<div class="scroll-container">
+
+			<!-- картинка -->
+			<div class="hardware-container" id="hw-container">
+				<img src="https://www.apple.com/v/macbook-pro/av/images/overview/display/display_hero__dnrmwfbtmz0i_large_2x.jpg"
+				     alt="MacBook Pro Display" class="hardware-image">
+			</div>
+
+			<!-- оверлей -->
+			<div class="scrim" id="scrim"></div>
+
+			<!-- текст -->
+			<div class="copy-lockup">
+				<div class="hardware-zoom-copy" id="copy-block">
+					<div class="line-clip"><p data-line="0">Every incoming Bowdoin student</p></div>
+					<div class="line-clip"><p data-line="1">receives a brand new MacBook Pro</p></div>
+					<div class="line-clip"><p data-line="2">to support your academic journey.</p></div>
+					<div class="line-clip"><p data-line="3">Powerful tools for powerful minds.</p></div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- ══ / SCROLL TRACK ══ -->
+
+	<div class="subsection-container">
+		<div class="viewport-content">
+			<div class="column">
+				<p class="typography-eyebrow-reduced section-copy-with-highlight">
+					<span class="highlight">By providing every student a 13-inch MacBook Pro, iPad mini, and Apple Pencil,</span> Bowdoin inspires innovation and creates digital equity for every student regardless of family means, fully equipping them with the tools and opportunities to learn and lead in a digital world.
+				</p>
+
+				<p>Bowdoin College's groundbreaking Digital Excellence Commitment (DExC) will provide every current student and all future students with a suite of the latest Apple technology and access to a full range of course-specific software designed to advance learning, inspire innovative teaching, and create digital equity across the student body in the use of tools essential for success in the twenty-first century.</p>
+				<p>DExC will build on the success of <a href="#">Bowdoin's iPad Initiative</a> by equipping all students with a 13-inch MacBook Pro powered by M1, an iPad mini, and an Apple Pencil, along with access to software used across the range of courses at the College, beginning in fall 2022. The cost of the program will be covered entirely by Bowdoin.</p>
+
+				<div class="img-wrap">
+					<img alt="macbook-and-ipad-wide.jpg" class="full-width no-border" height="340" src="./img/hero-mac.jpg" width="853">
+					<img src="https://www.apple.com/v/ipad-pro/av/images/overview/intelligence/hero__mdl3lpkglcia_large_2x.jpg" alt="">
+				</div>
+
+				<p>"During the pandemic we witnessed firsthand the power of a common technology platform for teaching and learning, along with the substantial and differential benefits that come with the combination of a laptop and iPad with an Apple Pencil," said Bowdoin College President Clayton Rose.</p>
+
+				<p><b>"Our Digital Excellence Commitment allows us to level the playing field so that every student has the opportunity to fully benefit from the technology that plays an essential and growing role in the learning experience at Bowdoin. Our central mission is to deliver an exceptional liberal arts education along with the knowledge and skills students need to lead in our increasingly digital world."</b></p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div id="bottom">
+	<h2>Your journey starts here</h2>
+	<p>Customize your MacBook and make it yours. Welcome to Bowdoin.</p>
+
+	<div class="sticker-wrap">
+		<div class="sticker sticker3">
+			<img src="./img/logo-3.svg" alt="Polar Bear">
+		</div>
+		<div class="sticker sticker1">
+			<img src="./img/logo-1.svg" alt="Bowdoin">
+		</div>
+		<div class="sticker sticker2">
+			<img src="./img/logo-2.svg" alt="Polar Bear">
+		</div>
+		<div class="sticker sticker4">
+			<img src="./img/logo-4.png" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker5">
+			<img src="./img/logo-5.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker6">
+			<img src="./img/logo-6.png" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker7">
+			<img src="./img/logo-7.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker8">
+			<img src="./img/logo-8.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker9">
+			<img src="./img/logo-9.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+		<div class="sticker sticker10">
+			<img src="./img/logo-10.svg" alt="Bowdoin College" class="bowdoin-logo">
+		</div>
+	</div>
+</div>
+
+<script>
+(function () {
+
+/* ─── helpers ─────────────────────────────────── */
+const clamp  = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+const lerp   = (a, b, t)   => a + (b - a) * t;
+/* ease-in-out cubic */
+const easeIO = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
+
+/* ─── references ──────────────────────────────── */
+const section     = document.getElementById('hw-zoom');
+const hwContainer = document.getElementById('hw-container');
+const scrim       = document.getElementById('scrim');
+const lines       = document.querySelectorAll('.hardware-zoom-copy p');
+
+/*
+  ── Фази анімації (в долях треку 0..1) ──────────
+  0.00 – 0.10  нічого
+  0.10 – 0.30  з'являється oверлей
+  0.30 – 0.65  виїжджають рядки тексту (знизу → вгору)
+  0.65 – 0.80  текст залишається
+  0.80 – 0.95  оверлей зникає + картинка зменшується
+  0.95 – 1.00  фінальний малий масштаб
+*/
+
+const PHASE = {
+	scrimIn:   [0.10, 0.30],
+	textIn:    [0.30, 0.68],   // всі 4 рядки укладаються в цей діапазон
+	textHold:  [0.68, 0.80],
+	scrimOut:  [0.80, 0.95],
+	zoomOut:   [0.75, 1.00],
+};
+
+/* нормалізований прогрес відрізку */
+function seg(p, from, to) {
+	return clamp((p - from) / (to - from), 0, 1);
+}
+
+function animate() {
+	const rect        = section.getBoundingClientRect();
+	const trackLen    = rect.height - window.innerHeight;  // скролабельна частина
+	const scrolled    = -rect.top;                         // скільки пройшли
+	const p           = clamp(scrolled / trackLen, 0, 1);  // 0..1
+
+	/* 1. Oверлей */
+	const scrimIn  = easeIO(seg(p, ...PHASE.scrimIn));
+	const scrimOut = easeIO(seg(p, ...PHASE.scrimOut));
+	scrim.style.opacity = Math.max(0, scrimIn - scrimOut);
+
+	/* 2. Рядки тексту — кожен із затримкою */
+	const LINE_COUNT = lines.length;
+	lines.forEach((line, i) => {
+		// кожен рядок займає свій sub-відрізок всередині textIn
+		const stride = 0.12;   // ширина вікна одного рядка
+		const offset = i * 0.07;
+		const [tFrom, tTo] = PHASE.textIn;
+		const lineFrom = tFrom + offset;
+		const lineTo   = lineFrom + stride;
+
+		const lineP = easeIO(seg(p, lineFrom, lineTo));
+
+		/* з'явлення */
+		const ty = lerp(40, 0, lineP);   // px
+		const op = lineP;
+
+		/* зникнення — разом зі scrimOut */
+		const fadeOut = easeIO(seg(p, ...PHASE.scrimOut));
+
+		line.style.transform = `translateY(${ty}px)`;
+		line.style.opacity   = op * (1 - fadeOut);
+	});
+
+	/* 3. Zoom картинки: 1.0 → 0.72 */
+	const zoomP  = easeIO(seg(p, ...PHASE.zoomOut));
+	const scale  = lerp(1.7, 0.72, zoomP);
+	hwContainer.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('scroll', animate, { passive: true });
+animate();
+
+})();
+</script>
+</body>
+</html>
