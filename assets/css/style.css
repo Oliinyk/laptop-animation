@@ -108,14 +108,14 @@ body {
 
 /* ══ STICKER BOARD ══ */
 .sticker-wrap {
-	position: relative;
+    position: relative;
     width: 100%;
     max-width: 900px;
     height: 600px;
     margin: 60px auto 0;
-	background-image: url('../img/mac-macbook-pro-6.png');
-	background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-image: url('../img/mac-macbook-pro-6.png');
+    background-repeat: no-repeat;
+    background-size: contain;
     overflow: hidden;
 }
 .sticker { position: absolute; opacity: 0; will-change: transform, opacity; user-select: none; -webkit-user-drag: none; }
@@ -167,6 +167,12 @@ body {
 /* ══ MOBILE ══ */
 
 @media (min-width: 992px) {
+    .sticker-wrap {
+        background-size: 100% 100%;
+    }
+}
+
+@media (min-height: 800px) {
     .subsection-container {
         margin-top: -65px;
     }
@@ -189,7 +195,7 @@ body {
 	.device-right { transform: translateY(60px); transition-delay: 0.18s; }
 
 	/* Smaller sticker board */
-	.sticker-wrap { height: 300px; }
+	/* .sticker-wrap { height: 300px; } */
 	#bottom { padding: 3rem 1.5rem; }
 }
 
