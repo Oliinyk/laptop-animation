@@ -13,272 +13,82 @@ body {
 	overflow-x:hidden;
 	-webkit-font-smoothing:antialiased;
 }
-
-.section-display {
-	position:relative;
-	background:#000;
-	padding-top:0;
-}
-
-.section-header {
-	max-width:980px;
-	margin:0 auto;
-	padding:6rem 2rem 4rem;
-}
-
-.section-header-eyebrow {
-	font-size:17px;
-	font-weight:600;
-	color:#86868b;
-	letter-spacing:0.05em;
-	margin-bottom:1rem;
-}
-
+.section-display { position:relative; background:#000; padding-top:0; }
+.section-header { max-width:980px; margin:0 auto; padding:6rem 2rem 4rem; }
+.section-header-eyebrow { font-size:17px; font-weight:600; color:#86868b; letter-spacing:0.05em; margin-bottom:1rem; }
 .section-header-headline {
-	font-size:clamp(2.5rem, 5vw, 4.5rem);
-	font-weight:700;
-	line-height:1.05;
-	letter-spacing:-0.02em;
+	font-size:clamp(2.5rem, 5vw, 4.5rem); font-weight:700; line-height:1.05; letter-spacing:-0.02em;
 	background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
-.hardware-zoom {
-	position: relative;
-	height: 400vh;
-}
-
-.scroll-container {
-	position: sticky;
-	top: 0;
-	height: 100vh;
-	overflow: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.hardware-container {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transform-origin: center center;
-	will-change: transform;
-}
-
-.hardware-image {
-	width: min(1400px, 120vw);
-	height: auto;
-	display: block;
-	user-select: none;
-}
-
-.scrim {
-	position: absolute;
-	inset: 0;
-	background: rgba(0, 0, 0, 0.72);
-	opacity: 0;
-	pointer-events: none;
-	will-change: opacity;
-	z-index: 2;
-}
-
-.copy-lockup {
-	position: absolute;
-	inset: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	pointer-events: none;
-	z-index: 3;
-	overflow: hidden;
-}
-
-.hardware-zoom-copy {
-	text-align: center;
-	padding: 0 2rem;
-}
-
-.line-clip {
-	overflow: hidden;
-	line-height: 1.3;
-	margin-bottom: 0.4rem;
-}
-
-.line-clip p {
-	font-size: clamp(1.2rem, 2.5vw, 1.9rem);
-	font-weight: 600;
-	color: #f5f5f7;
-	transform: translateY(100%);
-	will-change: transform, opacity;
-	opacity: 0;
-}
-
-.subsection-container {
-	position: relative;
-	background: #000;
-}
-
-.viewport-content {
-	max-width: 980px;
-	margin: 0 auto;
-	padding: 0rem 2rem 5rem;
-}
-
-.column {
-	font-size: 21px;
-	max-width: 840px;
-	margin: 0 auto;
-}
-
-.column p {
-	margin: 0 0 25px;
-	position: relative;
-	z-index: 1;
-}
-
-.column a {
-	color: #2997ff;
-	text-decoration: none;
-}
+.hardware-zoom { position: relative; height: 400vh; }
+.scroll-container { position: sticky; top: 0; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.hardware-container { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; transform-origin: center center; will-change: transform; }
+.hardware-image { width: min(1400px, 120vw); height: auto; display: block; user-select: none; }
+.scrim { position: absolute; inset: 0; background: rgba(0,0,0,0.72); opacity: 0; pointer-events: none; will-change: opacity; z-index: 2; }
+.copy-lockup { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 3; overflow: hidden; }
+.hardware-zoom-copy { text-align: center; padding: 0 2rem; }
+.line-clip { overflow: hidden; line-height: 1.3; margin-bottom: 0.4rem; }
+.line-clip p { font-size: clamp(1.2rem, 2.5vw, 1.9rem); font-weight: 600; color: #f5f5f7; transform: translateY(100%); will-change: transform, opacity; opacity: 0; }
+.subsection-container { position: relative; background: #000; }
+.viewport-content { max-width: 980px; margin: 0 auto; padding: 0rem 2rem 5rem; }
+.column { font-size: 21px; max-width: 840px; margin: 0 auto; }
+.column p { margin: 0 0 25px; position: relative; z-index: 1; }
+.column a { color: #2997ff; text-decoration: none; }
 .column a:hover { text-decoration: underline; }
-
-.column .img-wrap {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 0;
-	position: relative;
-	margin: 0 0 -100px;
-}
+.column .img-wrap { display: flex; align-items: center; justify-content: center; z-index: 0; position: relative; margin: 0 0 -100px; }
 .column img { max-width: 100%; height: auto; }
-
-.typography-eyebrow-reduced {
-	font-size: 24px;
-	line-height: 1.4;
-	font-weight: 400;
-	color: #f5f5f7;
-	margin-bottom: 35px;
-}
-
+.typography-eyebrow-reduced { font-size: 24px; line-height: 1.4; font-weight: 400; color: #f5f5f7; margin-bottom: 35px; }
 .section-copy-with-highlight .highlight {
 	background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	font-weight: 600;
+	-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;
 }
-
-#bottom {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	padding: 4rem 2rem;
-}
-
+#bottom { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 2rem; }
 #bottom h2 {
-	font-size: clamp(2rem, 5vw, 4rem);
-	font-weight: 700;
-	letter-spacing: -.02em;
-	margin-bottom: 1rem;
+	font-size: clamp(2rem, 5vw, 4rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 1rem;
 	background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
-	background-clip: text;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
+	background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-
-#bottom p {
-	color: rgba(255,255,255,.65);
-	font-size: 1.1rem;
-	max-width: 500px;
-	line-height: 1.7;
-}
-
+#bottom p { color: rgba(255,255,255,.65); font-size: 1.1rem; max-width: 500px; line-height: 1.7; }
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
 
-
+/* ══ STICKER BOARD ══ */
 .sticker-wrap {
-	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
-	gap: 40px;
-	margin-top: 60px;
+	position: relative; width: 100%; max-width: 900px; height: 560px; margin: 60px auto 0;
+	background-image: url('./img/mac-macbook-pro.png');
+	background-repeat: no-repeat; background-size: 100% 100%; overflow: hidden;
 }
-.sticker1 {
-	grid-column-start: 2;
-	grid-column-end: 5;
-}
+.sticker { position: absolute; opacity: 0; will-change: transform, opacity; user-select: none; -webkit-user-drag: none; }
+.sticker img { width: 100%; height: auto; object-fit: contain; pointer-events: none; -webkit-user-drag: none; user-select: none; display: block; }
 
-/* ══════════════════════════════════
-   STICKER ANIMATIONS
-   ══════════════════════════════════ */
-
-/* кожен стікер починає невидимим і «кинутим» */
-.sticker {
-	opacity: 0;
-	will-change: transform, opacity;
-}
-
-/* Анімація — «стікер кидають на стіл» */
 @keyframes stickerDrop {
-	0% {
-		opacity: 0;
-		transform: translateY(-60px) rotate(var(--rot-start, -8deg)) scale(0.7);
-	}
-	55% {
-		opacity: 1;
-		transform: translateY(6px) rotate(calc(var(--rot-end, 3deg) * 0.5)) scale(1.05);
-	}
-	75% {
-		transform: translateY(-3px) rotate(var(--rot-end, 3deg)) scale(0.98);
-	}
-	90% {
-		transform: translateY(2px) rotate(calc(var(--rot-end, 3deg) * 0.8)) scale(1.01);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0) rotate(var(--rot-end, 3deg)) scale(1);
-	}
+	0%   { opacity:0; transform:rotate(var(--rot-start,-8deg)) scale(0.4) translateY(-80px); filter:blur(6px); }
+	45%  { opacity:1; filter:blur(0); transform:rotate(calc(var(--rot-end,3deg)*0.5)) scale(1.12) translateY(12px); }
+	65%  { transform:rotate(calc(var(--rot-end,3deg)*1.15)) scale(0.95) translateY(-6px); }
+	80%  { transform:rotate(calc(var(--rot-end,3deg)*0.9)) scale(1.03) translateY(3px); }
+	92%  { transform:rotate(var(--rot-end,3deg)) scale(0.99) translateY(-1px); }
+	100% { opacity:1; transform:rotate(var(--rot-end,3deg)) scale(1) translateY(0); filter:blur(0); }
 }
+.sticker.landed { opacity:1; animation: stickerDrop 0.8s cubic-bezier(0.22,1,0.36,1) both; }
 
-/* «Приземлений» стан — зберігаємо кут нахилу */
-.sticker.landed {
-	opacity: 1;
-	animation: stickerDrop 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-	transform: rotate(var(--rot-end, 3deg));
-}
+.sticker1  { --rot-start:-14deg; --rot-end:  2deg; animation-delay:0.00s; }
+.sticker2  { --rot-start: 11deg; --rot-end: -4deg; animation-delay:0.10s; }
+.sticker3  { --rot-start: -7deg; --rot-end:  6deg; animation-delay:0.20s; }
+.sticker4  { --rot-start: 15deg; --rot-end: -3deg; animation-delay:0.30s; }
+.sticker5  { --rot-start:-10deg; --rot-end:  5deg; animation-delay:0.40s; }
+.sticker6  { --rot-start:  9deg; --rot-end: -6deg; animation-delay:0.50s; }
+.sticker7  { --rot-start:-13deg; --rot-end:  4deg; animation-delay:0.60s; }
+.sticker8  { --rot-start: 12deg; --rot-end: -5deg; animation-delay:0.70s; }
+.sticker9  { --rot-start: -8deg; --rot-end:  7deg; animation-delay:0.80s; }
+.sticker10 { --rot-start: 13deg; --rot-end: -2deg; animation-delay:0.90s; }
+.sticker11 { --rot-start:  8deg; --rot-end: -4deg; animation-delay:1.00s; }
 
-/* Унікальні кути і затримки для кожного стікера */
-.sticker1  { --rot-start: -12deg; --rot-end:  2deg; animation-delay: 0.00s; }
-.sticker2  { --rot-start:  10deg; --rot-end: -4deg; animation-delay: 0.08s; }
-.sticker3  { --rot-start:  -6deg; --rot-end:  5deg; animation-delay: 0.16s; }
-.sticker4  { --rot-start:  14deg; --rot-end: -3deg; animation-delay: 0.24s; }
-.sticker5  { --rot-start:  -9deg; --rot-end:  6deg; animation-delay: 0.32s; }
-.sticker6  { --rot-start:   8deg; --rot-end: -5deg; animation-delay: 0.40s; }
-.sticker7  { --rot-start: -13deg; --rot-end:  3deg; animation-delay: 0.48s; }
-.sticker8  { --rot-start:  11deg; --rot-end: -6deg; animation-delay: 0.56s; }
-.sticker9  { --rot-start:  -7deg; --rot-end:  4deg; animation-delay: 0.64s; }
-.sticker10 { --rot-start:  12deg; --rot-end: -2deg; animation-delay: 0.72s; }
-
-/* Hover — стікер трохи піднімається і повертається */
-.sticker.landed:hover {
-	animation: none;
-	opacity: 1;
-	transform: rotate(0deg) scale(1.08) translateY(-4px);
-	transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-	cursor: grab;
-	filter: drop-shadow(0 12px 24px rgba(0,0,0,0.6));
-	z-index: 10;
-	position: relative;
-}
-
+.sticker.landed:not(.dragging):hover { z-index:50 !important; cursor:grab; transition:filter 0.25s ease; filter:drop-shadow(0 18px 36px rgba(0,0,0,0.7)); }
+.sticker.dragging { cursor:grabbing !important; z-index:999 !important; filter:drop-shadow(0 30px 60px rgba(0,0,0,0.85)) brightness(1.08) !important; transition:none !important; }
+.sticker.snap-back { transition: transform 0.55s cubic-bezier(0.34,1.3,0.64,1) !important; }
+.sticker-hint { margin-top:24px; font-size:12px; color:rgba(255,255,255,0.2); letter-spacing:0.1em; text-transform:uppercase; }
 </style>
 </head>
 <body>
@@ -291,22 +101,12 @@ body {
 		</header>
 	</div>
 
-	<!-- ══ SCROLL TRACK ══ -->
 	<div class="hardware-zoom" id="hw-zoom">
-
-		<!-- sticky viewport -->
 		<div class="scroll-container">
-
-			<!-- картинка -->
 			<div class="hardware-container" id="hw-container">
-				<img src="https://www.apple.com/v/macbook-pro/av/images/overview/display/display_hero__dnrmwfbtmz0i_large_2x.jpg"
-				     alt="MacBook Pro Display" class="hardware-image">
+				<img src="https://www.apple.com/v/macbook-pro/av/images/overview/display/display_hero__dnrmwfbtmz0i_large_2x.jpg" alt="MacBook Pro Display" class="hardware-image">
 			</div>
-
-			<!-- оверлей -->
 			<div class="scrim" id="scrim"></div>
-
-			<!-- текст -->
 			<div class="copy-lockup">
 				<div class="hardware-zoom-copy" id="copy-block">
 					<div class="line-clip"><p data-line="0">Every incoming Bowdoin student</p></div>
@@ -315,10 +115,8 @@ body {
 					<div class="line-clip"><p data-line="3">Powerful tools for powerful minds.</p></div>
 				</div>
 			</div>
-
 		</div>
 	</div>
-	<!-- ══ / SCROLL TRACK ══ -->
 
 	<div class="subsection-container">
 		<div class="viewport-content">
@@ -326,17 +124,13 @@ body {
 				<p class="typography-eyebrow-reduced section-copy-with-highlight">
 					<span class="highlight">By providing every student a 13-inch MacBook Pro, iPad mini, and Apple Pencil,</span> Bowdoin inspires innovation and creates digital equity for every student regardless of family means, fully equipping them with the tools and opportunities to learn and lead in a digital world.
 				</p>
-
 				<p>Bowdoin College's groundbreaking Digital Excellence Commitment (DExC) will provide every current student and all future students with a suite of the latest Apple technology and access to a full range of course-specific software designed to advance learning, inspire innovative teaching, and create digital equity across the student body in the use of tools essential for success in the twenty-first century.</p>
 				<p>DExC will build on the success of <a href="#">Bowdoin's iPad Initiative</a> by equipping all students with a 13-inch MacBook Pro powered by M1, an iPad mini, and an Apple Pencil, along with access to software used across the range of courses at the College, beginning in fall 2022. The cost of the program will be covered entirely by Bowdoin.</p>
-
 				<div class="img-wrap">
 					<img alt="macbook-and-ipad-wide.jpg" class="full-width no-border" height="340" src="./img/hero-mac.jpg" width="853">
 					<img src="https://www.apple.com/v/ipad-pro/av/images/overview/intelligence/hero__mdl3lpkglcia_large_2x.jpg" alt="">
 				</div>
-
 				<p>"During the pandemic we witnessed firsthand the power of a common technology platform for teaching and learning, along with the substantial and differential benefits that come with the combination of a laptop and iPad with an Apple Pencil," said Bowdoin College President Clayton Rose.</p>
-
 				<p><b>"Our Digital Excellence Commitment allows us to level the playing field so that every student has the opportunity to fully benefit from the technology that plays an essential and growing role in the learning experience at Bowdoin. Our central mission is to deliver an exceptional liberal arts education along with the knowledge and skills students need to lead in our increasingly digital world."</b></p>
 			</div>
 		</div>
@@ -347,112 +141,96 @@ body {
 	<h2>Your journey starts here</h2>
 	<p>Customize your MacBook and make it yours. Welcome to Bowdoin.</p>
 
-	<div class="sticker-wrap">
-		<div class="sticker sticker3">
-			<img src="./img/logo-3.svg" alt="Polar Bear">
+	<div class="sticker-wrap" id="sticker-board">
+		<div class="sticker sticker1"  style="width:320px; left:30px;   top:30px;"  data-rot="2">
+			<img src="./img/logo-1.svg" alt="Bowdoin" draggable="false">
 		</div>
-		<div class="sticker sticker1">
-			<img src="./img/logo-1.svg" alt="Bowdoin">
+		<div class="sticker sticker2"  style="width:130px; left:75px;   top:130px;" data-rot="-4">
+			<img src="./img/logo-2.svg" alt="Polar Bear" draggable="false">
 		</div>
-		<div class="sticker sticker2">
-			<img src="./img/logo-2.svg" alt="Polar Bear">
+		<div class="sticker sticker3"  style="width:150px; left:410px;  top:40px;"  data-rot="6">
+			<img src="./img/logo-3.svg" alt="Polar Bear" draggable="false">
 		</div>
-		<div class="sticker sticker4">
-			<img src="./img/logo-4.png" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker4"  style="width:110px; left:620px;  top:15px;"  data-rot="-3">
+			<img src="./img/logo-4.png" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker5">
-			<img src="./img/logo-5.svg" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker5"  style="width:140px; left:760px;  top:50px;"  data-rot="5">
+			<img src="./img/logo-5.svg" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker6">
-			<img src="./img/logo-6.png" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker6"  style="width:100px; left:50px;   bottom:25px;" data-rot="-6">
+			<img src="./img/logo-6.png" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker7">
-			<img src="./img/logo-7.svg" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker7"  style="width:146px; left:180px;  top:270px;" data-rot="4">
+			<img src="./img/logo-7.svg" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker8">
-			<img src="./img/logo-8.svg" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker8"  style="width:118px; left:380px;  bottom:10px;" data-rot="-5">
+			<img src="./img/logo-8.svg" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker9">
-			<img src="./img/logo-9.svg" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker9"  style="width:145px; left:570px;  top:240px;" data-rot="7">
+			<img src="./img/logo-9.svg" alt="Bowdoin College" draggable="false">
 		</div>
-		<div class="sticker sticker10">
-			<img src="./img/logo-10.svg" alt="Bowdoin College" class="bowdoin-logo">
+		<div class="sticker sticker10" style="width:225px; right:-20px; top:200px;" data-rot="-2">
+			<img src="./img/logo-10.svg" alt="Bowdoin College" draggable="false">
+		</div>
+		<div class="sticker sticker11" style="width:125px; right:45px;  bottom:20px;" data-rot="-2">
+			<img src="./img/logo-11.svg" alt="Bowdoin College" draggable="false">
 		</div>
 	</div>
+	<p class="sticker-hint">drag &amp; drop stickers to arrange</p>
 </div>
 
 <script>
 (function () {
 
-/* ─── helpers ─────────────────────────────────── */
 const clamp  = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
 const lerp   = (a, b, t)   => a + (b - a) * t;
-/* ease-in-out cubic */
 const easeIO = t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
 
-/* ─── references ──────────────────────────────── */
+/* ── Scroll animation ── */
 const section     = document.getElementById('hw-zoom');
 const hwContainer = document.getElementById('hw-container');
 const scrim       = document.getElementById('scrim');
 const lines       = document.querySelectorAll('.hardware-zoom-copy p');
 
 const PHASE = {
-	scrimIn:   [0.10, 0.30],
-	textIn:    [0.30, 0.68],
-	textHold:  [0.68, 0.80],
-	scrimOut:  [0.80, 0.95],
-	zoomOut:   [0.75, 1.00],
+	scrimIn:  [0.10, 0.30],
+	textIn:   [0.30, 0.68],
+	scrimOut: [0.80, 0.95],
+	zoomOut:  [0.75, 1.00],
 };
 
-function seg(p, from, to) {
-	return clamp((p - from) / (to - from), 0, 1);
-}
+function seg(p, from, to) { return clamp((p - from) / (to - from), 0, 1); }
 
 function animate() {
-	const rect        = section.getBoundingClientRect();
-	const trackLen    = rect.height - window.innerHeight;
-	const scrolled    = -rect.top;
-	const p           = clamp(scrolled / trackLen, 0, 1);
+	const rect     = section.getBoundingClientRect();
+	const trackLen = rect.height - window.innerHeight;
+	const p        = clamp(-rect.top / trackLen, 0, 1);
 
-	/* 1. Oверлей */
 	const scrimIn  = easeIO(seg(p, ...PHASE.scrimIn));
 	const scrimOut = easeIO(seg(p, ...PHASE.scrimOut));
 	scrim.style.opacity = Math.max(0, scrimIn - scrimOut);
 
-	/* 2. Рядки тексту */
 	lines.forEach((line, i) => {
-		const stride = 0.12;
-		const offset = i * 0.07;
-		const [tFrom, tTo] = PHASE.textIn;
-		const lineFrom = tFrom + offset;
-		const lineTo   = lineFrom + stride;
-
-		const lineP = easeIO(seg(p, lineFrom, lineTo));
-
-		const ty = lerp(40, 0, lineP);
-		const op = lineP;
-
-		const fadeOut = easeIO(seg(p, ...PHASE.scrimOut));
-
-		line.style.transform = `translateY(${ty}px)`;
-		line.style.opacity   = op * (1 - fadeOut);
+		const lineFrom = PHASE.textIn[0] + i * 0.07;
+		const lineP    = easeIO(seg(p, lineFrom, lineFrom + 0.12));
+		const fadeOut  = easeIO(seg(p, ...PHASE.scrimOut));
+		line.style.transform = `translateY(${lerp(40, 0, lineP)}px)`;
+		line.style.opacity   = lineP * (1 - fadeOut);
 	});
 
-	/* 3. Zoom картинки */
-	const zoomP  = easeIO(seg(p, ...PHASE.zoomOut));
-	const scale  = lerp(1.7, 0.72, zoomP);
-	hwContainer.style.transform = `scale(${scale})`;
+	hwContainer.style.transform = `scale(${lerp(1.7, 0.72, easeIO(seg(p, ...PHASE.zoomOut)))})`;
 }
 
 window.addEventListener('scroll', animate, { passive: true });
 animate();
 
-/* ══════════════════════════════════
-   STICKER INTERSECTION OBSERVER
-   ══════════════════════════════════ */
+/* ── Stickers ── */
 (function initStickers() {
+	const board    = document.getElementById('sticker-board');
 	const stickers = document.querySelectorAll('.sticker');
+	let   zCounter = 10;
 
+	/* Intersection observer — trigger drop animation */
 	const observer = new IntersectionObserver((entries) => {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
@@ -460,12 +238,103 @@ animate();
 				observer.unobserve(entry.target);
 			}
 		});
-	}, {
-		threshold: 0.15,
-		rootMargin: '0px 0px -40px 0px'
-	});
+	}, { threshold: 0.10, rootMargin: '0px 0px -40px 0px' });
 
 	stickers.forEach(s => observer.observe(s));
+
+	/* Drag & Drop */
+	stickers.forEach(sticker => {
+		let isDragging = false;
+		let startX, startY, origLeft, origTop;
+		const currentRot = parseFloat(sticker.dataset.rot) || 0;
+
+		/*
+		 * FIX: use getBoundingClientRect instead of reading style.left/top
+		 * so stickers anchored with `bottom` or `right` don't jump on pickup.
+		 */
+		const resolvePos = () => {
+			const sr = sticker.getBoundingClientRect();
+			const br = board.getBoundingClientRect();
+			return { left: sr.left - br.left, top: sr.top - br.top };
+		};
+
+		sticker.addEventListener('pointerdown', e => {
+			if (!sticker.classList.contains('landed')) return;
+			e.preventDefault();
+
+			isDragging = true;
+			sticker.setPointerCapture(e.pointerId);
+
+			/* Freeze animation */
+			sticker.style.animation = 'none';
+			sticker.style.opacity   = '1';
+
+			/* Resolve real position and switch to top/left anchoring */
+			const pos = resolvePos();
+			origLeft = pos.left;
+			origTop  = pos.top;
+
+			sticker.style.left   = `${origLeft}px`;
+			sticker.style.top    = `${origTop}px`;
+			sticker.style.right  = 'auto';
+			sticker.style.bottom = 'auto';
+
+			startX = e.clientX;
+			startY = e.clientY;
+
+			zCounter++;
+			sticker.style.zIndex = zCounter;
+			sticker.classList.add('dragging');
+			sticker.style.transform = `rotate(${currentRot}deg) scale(1.1)`;
+		});
+
+		sticker.addEventListener('pointermove', e => {
+			if (!isDragging) return;
+			e.preventDefault();
+
+			const dx = e.clientX - startX;
+			const dy = e.clientY - startY;
+			const tilt = clamp(dx * 0.04, -10, 10);
+
+			sticker.style.left      = `${origLeft + dx}px`;
+			sticker.style.top       = `${origTop  + dy}px`;
+			sticker.style.transform = `rotate(${currentRot + tilt}deg) scale(1.1)`;
+		});
+
+		const onRelease = e => {
+			if (!isDragging) return;
+			isDragging = false;
+			sticker.classList.remove('dragging');
+
+			const dx = e.clientX - startX;
+			const dy = e.clientY - startY;
+			const bw = board.offsetWidth;
+			const bh = board.offsetHeight;
+			const sw = sticker.offsetWidth;
+			const sh = sticker.offsetHeight;
+
+			sticker.style.left = `${clamp(origLeft + dx, -sw * 0.25, bw - sw * 0.75)}px`;
+			sticker.style.top  = `${clamp(origTop  + dy, -sh * 0.25, bh - sh * 0.75)}px`;
+
+			/* Landing wobble */
+			sticker.classList.add('snap-back');
+			const wobble = [
+				`rotate(${currentRot + 3}deg) scale(1.02)`,
+				`rotate(${currentRot - 2}deg) scale(0.99)`,
+				`rotate(${currentRot}deg) scale(1)`,
+			];
+			let wi = 0;
+			const doWobble = () => {
+				if (wi >= wobble.length) { sticker.classList.remove('snap-back'); return; }
+				sticker.style.transform = wobble[wi++];
+				setTimeout(doWobble, 90);
+			};
+			setTimeout(doWobble, 320);
+		};
+
+		sticker.addEventListener('pointerup',     onRelease);
+		sticker.addEventListener('pointercancel', onRelease);
+	});
 })();
 
 })();
