@@ -42,7 +42,16 @@ function animateHero() {
 	});
 
 	/* MacBook display zooms out as we leave the section */
-	hwContainer.style.transform = `scale(${lerp(1.7, 0.72, easeIO(seg(p, ...PHASE.zoomOut)))})`;
+	// hwContainer.style.transform = `scale(${lerp(1.7, 0.72, easeIO(seg(p, ...PHASE.zoomOut)))})`;
+
+	/* MacBook display: animated zoom on desktop (≥992px), fixed small scale on mobile */
+	if (window.innerWidth >= 992) {
+		hwContainer.style.transform = `scale(${lerp(1.7, 0.72, easeIO(seg(p, ...PHASE.zoomOut)))})`;
+	} else {
+		// hwContainer.style.transform = 'scale(0.38)';
+        hwContainer.style.transform = `scale(${lerp(1.7, 0.38, easeIO(seg(p, ...PHASE.zoomOut)))})`;
+	}
+
 }
 
 window.addEventListener('scroll', animateHero, { passive: true });

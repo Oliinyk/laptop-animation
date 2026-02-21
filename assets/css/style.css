@@ -59,7 +59,7 @@ body {
     will-change: transform; 
 }
 .hardware-image {
-    width: min(1400px, 250vw);
+    width: min(1400px, 120vw);
     height: auto;
     display: block;
     user-select: none;
@@ -223,8 +223,8 @@ body {
     margin: 60px auto 0;
     background-image: url('../img/mac-macbook-pro-6.png');
     background-repeat: no-repeat;
-    background-size: contain;
     overflow: hidden;
+    background-size: 100% 100%;
 }
 .sticker {
     position: absolute;
@@ -299,16 +299,6 @@ body {
 ::-webkit-scrollbar-track { background: #000; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
 
-
-@media (min-width: 992px) {
-    .hardware-image {
-        width: min(1400px, 120vw);
-    }
-    .sticker-wrap {
-        background-size: 100% 100%;
-    }
-}
-
 @media (min-height: 800px) {
     .subsection-container {
         margin-top: -65px;
@@ -319,9 +309,13 @@ body {
     .section-header-headline {
         font-size: 32px;
     }
+    .hardware-image {
+        width: min(1400px, 250vw);
+    }
     .sticker-wrap {
         height: 300px;
-        background-position: 50%;
+        background-position: 50% 0;
+        background-size: contain;
         max-width: 430px;
         margin: 30px auto 0;
     }
@@ -378,18 +372,40 @@ body {
 }
 
 @media (max-width: 475px) {
+    .sticker {
+        cursor: auto;
+    }
     .sticker-wrap {
         height: 250px;
+    }
+    .sticker1 {
+        left: 33px;
+    }
+    .sticker3 {
+        left: 120px;
+        top: 60px;
+    }
+    .sticker4 {
+        left: 225px;
+    }
+    .sticker5 {
+        left: 300px;
+    }
+    .sticker6 {
+        left: 40px;
     }
     .sticker8 {
         left: 171px;
     }
     .sticker9 {
-        left: 208px;
+        left: 225px;
         top: 83px;
     }
     .sticker10 {
-        right: -22px;
+        right: 10px;
         top: 75px;
+    }
+    .sticker11 {
+        right: 55px;
     }
 }
