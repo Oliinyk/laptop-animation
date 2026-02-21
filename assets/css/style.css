@@ -365,7 +365,9 @@ body {
         transform: translateY(60px);
         transition-delay: 0.18s;
     }
-	/* .sticker-wrap { height: 300px; } */
+    .sticker {
+        pointer-events: none;
+    }
     #bottom {
         padding: 0 1.5rem 3rem;
     }
@@ -407,5 +409,23 @@ body {
     }
     .sticker11 {
         right: 55px;
+    }
+}
+
+@media (max-width: 435px) {
+    .sticker1 {
+        left: 15px;
+    }
+    .sticker5 {
+        left: 285px;
+    }
+    .sticker6 {
+        left: 20px;
+    }
+    .sticker10 {
+        right: -10px;
+    }
+    .sticker11 {
+        right: 25px;
     }
 }
