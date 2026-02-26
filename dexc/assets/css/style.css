@@ -309,7 +309,7 @@ body {
 }
 .sticker-hint { 
 	margin-top:24px;
-	font-size:12px;
+	font-size:24px;
 	letter-spacing:0.1em;
 	text-transform:uppercase;
 	background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
@@ -396,14 +396,21 @@ body {
     /* .sticker {
         pointer-events: none;
     } */
+     .sticker {
+        touch-action: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
     .sticker-section .section-subtitle {
         font-size: 1rem;
     }
     .sticker-section {
         padding: 0 1.5rem 3rem;
     }
-    .sticker-section p.sticker-hint {
-	    display:none;
+    .sticker-section .sticker-hint {
+        font-size: 16px;
+	    /* display:none; */
     }
 }
 
