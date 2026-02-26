@@ -9,7 +9,6 @@ body {
     /* font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif; */
 	overflow-x:hidden; -webkit-font-smoothing:antialiased;
 }
-
 ::selection {
     background: #ffa72b;
     color: #fff;
@@ -23,7 +22,7 @@ body {
 }
 .section-header-eyebrow {
     position: relative;
-    font-size:33px;
+    font-size:32px;
     font-weight:600;
     letter-spacing:0em;
     margin-bottom:0.5rem;
@@ -120,8 +119,8 @@ body {
 /*  CONTENT SECTION  */
 .subsection-container { 
     position: relative;
-    background: #000;
     overflow: hidden;
+    margin-bottom: 50px;
 }
 .viewport-content { 
     max-width: 980px;
@@ -135,14 +134,6 @@ body {
 .viewport-content a:hover {
     text-decoration: underline;
 }
-.typography-eyebrow-reduced {
-    font-size: 2.25rem;
-    line-height: 1.25;
-    font-weight: 400;
-    color: #fafafa;
-    margin-bottom: 35px;
-    text-align:center;
-}
 .highlight {
 	background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
 	-webkit-background-clip: text;
@@ -151,8 +142,14 @@ body {
     font-weight: 600;
 }
 .section-divider {
-    margin-bottom:3rem;
-    margin-top:2.5rem;
+    margin-bottom: 3rem;
+    margin-top: 2.5rem;
+    color: red;
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: green;
+    background: rgba(255, 255, 255, 0.4);
 }
 
 /*  Text: slide up from bottom  */
@@ -212,6 +209,224 @@ body {
     transform: translate(0);
 }
 
+/* ── Software Cards Carousel wrapper ── */
+.cap-carousel-clip {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 0 80px;
+}
+.cap-carousel-section {
+    width: 100%;
+    padding:0;
+    position: relative;
+}
+.cap-carousel-section::before,
+.cap-carousel-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 120px;
+    z-index: 2;
+    pointer-events: none;
+}
+.cap-carousel-section::before {
+    left: 0;
+    background: linear-gradient(to right, #000 0%, transparent 100%);
+}
+.cap-carousel-section::after {
+    right: 0;
+    background: linear-gradient(to left, #000 0%, transparent 100%);
+}
+.cap-track-wrapper {
+    display: flex;
+    gap: 20px;
+    min-width: max-content;
+    animation: cap-scroll 64s linear infinite;
+}
+.cap-track-wrapper:hover { animation-play-state: paused; }
+
+@keyframes cap-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ── Software Cards ── */
+.cap-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 14px;
+    width: 180px;
+    padding: 24px 16px 20px;
+    border-radius: 0;
+    flex-shrink: 0;
+    cursor: default;
+    text-align: center;
+}
+.cap-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255,255,255,0.4);
+    z-index: 1;
+}
+.cap-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
+    transition: width 0.4s ease;
+    z-index: 2;
+}
+.cap-card:hover::after {
+    width: 100%;
+}
+.cap-card:hover .cap-label {
+    color:#fff;
+}
+.cap-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff3e94;
+}
+.cap-icon svg {
+    width: 100%;
+    height: 100%;
+}
+.cap-label {
+    font-size: 18px;
+    color: #dedede;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    text-transform: none;
+    font-weight:600;
+    transition: all 0.2s;
+}
+.section-title {
+    text-align: center;
+    /* font-size: clamp(2rem, 5vw, 4rem); */
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -.02em;
+    margin-bottom: 1rem;
+    background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* FAQ accordions */  
+.faq-section {
+    width: 100%;
+    max-width: 800px;
+    padding: 0 15px;
+    margin: 0 auto 80px;
+}
+.faq-section .section-title {
+    margin-bottom: 2rem;
+}
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.faq-item {
+    overflow: hidden;
+}
+.faq-item:first-child { border-radius: 18px 18px 0 0; }
+.faq-item:last-child  { border-radius: 0 0 18px 18px; }
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.35rem 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #f5f5f7;
+    background: #1d1d1f;
+    cursor: pointer;
+    gap: 1rem;
+    transition: background 0.2s ease;
+    user-select: none;
+    line-height: 1.4;
+}
+.faq-question:hover {
+    background: #2c2c2e;
+}
+.faq-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: relative;
+    transition: background 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.faq-icon::before,
+.faq-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #f5f5f7;
+    border-radius: 2px;
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.faq-icon::before {
+    width: 12px;
+    height: 1.5px;
+    transform: translate(-50%, -50%);
+}
+.faq-icon::after {
+    width: 1.5px;
+    height: 12px;
+    transform: translate(-50%, -50%);
+}
+.faq-item.is-open .faq-icon {
+    transform: rotate(45deg);
+}
+.faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+}
+.faq-item.is-open .faq-answer {
+    grid-template-rows: 1fr;
+}
+.faq-answer-inner {
+    overflow: hidden;
+    background: #1c1c1e;
+}
+.faq-answer-content {
+    padding: 0 1.6rem 1.5rem;
+    border-top: 1px solid #2c2c2e;
+}
+.faq-answer p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    color: #ababab;
+    padding-top: 1.2rem;
+}
+.faq-answer p + p {
+    padding-top: 0.75rem;
+}
+.faq-answer strong {
+    color: #f5f5f7;
+    font-weight: 500;
+}
+
 /* STICKER Section */
 .sticker-section { 
     display: flex; 
@@ -220,16 +435,6 @@ body {
     justify-content: center; 
     text-align: center; 
     padding: 0 4rem 2rem; 
-}
-.sticker-section .section-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -.02em;
-    margin-bottom: 1rem;
-    background-image: linear-gradient(90deg, #e4f6f0, #9dcfca 31%, #6b95ac 68%, #45657d);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 .sticker-section .section-subtitle {
     color: rgba(255,255,255,.85);
@@ -356,14 +561,14 @@ body {
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 3px; }
 
 @media (min-height: 800px) {
-    .subsection-container {
+   .hardware-zoom + .subsection-container {
         margin-top: -65px;
     }
 }
 
 @media (max-width: 991px) {
     .section-header-headline {
-        font-size: 32px;
+        font-size: 38px;
     }
     .hardware-image {
         width: min(1400px, 250vw);
@@ -405,9 +610,12 @@ body {
     .line-clip p {
         font-size: 32px;
     }
-	.typography-eyebrow-reduced {
-        font-size: 1.75rem;
+    .reveal-text {
+        font-size: 1.5rem;
 		line-height: 1.25;
+    }
+    .section-title {
+        font-size: 36px;
     }
 	.devices-showcase {
 		grid-template-columns: 1fr;
@@ -498,216 +706,4 @@ body {
     .sticker11 {
         right: 25px;
     }
-}
-
-/* ── Software Cards Carousel wrapper ── */
-.cap-carousel-clip {
-    overflow: hidden;
-    width: 100%;
-    margin-top:20px;
-    margin-bottom:80px;
-}
-.cap-carousel-section {
-    width: 100%;
-    padding:0;
-    position: relative;
-}
-.cap-carousel-section::before,
-.cap-carousel-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 120px;
-    z-index: 2;
-    pointer-events: none;
-}
-.cap-carousel-section::before {
-    left: 0;
-    background: linear-gradient(to right, #000 0%, transparent 100%);
-}
-.cap-carousel-section::after {
-    right: 0;
-    background: linear-gradient(to left, #000 0%, transparent 100%);
-}
-.cap-track-wrapper {
-    display: flex;
-    gap: 20px;
-    min-width: max-content;
-    animation: cap-scroll 64s linear infinite;
-}
-.cap-track-wrapper:hover { animation-play-state: paused; }
-
-@keyframes cap-scroll {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
-}
-
-/* ── Software Cards ── */
-.cap-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    gap: 14px;
-    width: 180px;
-    padding: 24px 16px 20px;
-    border-radius: 0;
-    flex-shrink: 0;
-    cursor: default;
-    text-align: center;
-}
-.cap-card::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: rgba(255,255,255,0.4);
-    z-index: 1;
-}
-.cap-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(108deg, #0090f7, #ba62fc 33%, #f2416b 66%, #f55600);
-    transition: width 0.4s ease;
-    z-index: 2;
-}
-.cap-card:hover::after {
-    width: 100%;
-}
-.cap-card:hover .cap-label {
-    color:#fff;
-}
-.cap-icon {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ff3e94;
-}
-.cap-icon svg {
-    width: 100%;
-    height: 100%;
-}
-.cap-label {
-    font-size: 18px;
-    color: #dedede;
-    letter-spacing: 0.01em;
-    line-height: 1.2;
-    text-transform: none;
-    font-weight:600;
-    transition: all 0.2s;
-}
-
-/* FAQ accordions */  
-.faq-section {
-    width: 100%;
-    max-width: 800px;
-    padding: 0 15px;
-    margin: 0 auto 80px;
-}
-.faq-section .section-title {
-    text-align: center;
-    font-size: 2.8rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #f5f5f7;
-    margin-bottom: 3rem;
-}
-.faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-}
-.faq-item {
-    overflow: hidden;
-}
-.faq-item:first-child { border-radius: 18px 18px 0 0; }
-.faq-item:last-child  { border-radius: 0 0 18px 18px; }
-.faq-question {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.35rem 1.6rem;
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #f5f5f7;
-    background: #1d1d1f;
-    cursor: pointer;
-    gap: 1rem;
-    transition: background 0.2s ease;
-    user-select: none;
-    line-height: 1.4;
-}
-.faq-question:hover {
-    background: #2c2c2e;
-}
-.faq-icon {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    position: relative;
-    transition: background 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.faq-icon::before,
-.faq-icon::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #f5f5f7;
-    border-radius: 2px;
-    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.faq-icon::before {
-    width: 12px;
-    height: 1.5px;
-    transform: translate(-50%, -50%);
-}
-.faq-icon::after {
-    width: 1.5px;
-    height: 12px;
-    transform: translate(-50%, -50%);
-}
-.faq-item.is-open .faq-icon {
-    transform: rotate(45deg);
-}
-.faq-answer {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s ease;
-}
-.faq-item.is-open .faq-answer {
-    grid-template-rows: 1fr;
-}
-.faq-answer-inner {
-    overflow: hidden;
-    background: #1c1c1e;
-}
-.faq-answer-content {
-    padding: 0 1.6rem 1.5rem;
-    border-top: 1px solid #2c2c2e;
-}
-.faq-answer p {
-    font-size: 1.25rem;
-    line-height: 1.5;
-    color: #ababab;
-    padding-top: 1.2rem;
-}
-.faq-answer p + p {
-    padding-top: 0.75rem;
-}
-.faq-answer strong {
-    color: #f5f5f7;
-    font-weight: 500;
 }
